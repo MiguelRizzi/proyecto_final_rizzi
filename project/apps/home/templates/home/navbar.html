@@ -5,14 +5,14 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="{% url 'home:index' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'home:about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home:index' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'home:about' %}">About</a></li>
                 {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link text-bg-light" href="#!">{{ user.username }}</a></li>
-                    <li class="nav-item"><a class="nav-link text-info" href="{% url 'home:logout' %}">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link text-info">{{ user.username }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home:logout' %}">Logout</a></li>
                 {% else %}
-                    <li class="nav-item"><a class="nav-link text-info" href="{% url 'home:login' %}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link text-info" href="{% url 'home:register' %}">Register</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/login/' %}active{% endif %}" href="{% url 'home:login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link {% if request.path == '/register/' %}active{% endif %}" href="{% url 'home:register' %}">Register</a></li>
                 {% endif %}
             </ul>
         </div>

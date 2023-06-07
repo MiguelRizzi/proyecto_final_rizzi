@@ -1,8 +1,14 @@
 {% extends 'home/base.html' %}
 
-{% block title %}Bienvenidos a mi Proyecto Django{% endblock title %}
+{% block header %}
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-1 text-center">
+            <h1 class="fw-bolder display-3">Mi Proyecto Django</h1>
+        </div>
+    </header>
+{% endblock header %}
     
 {% block content %}
-    <h2>Services we offer</h2>
+    <h2 class="display-5">Home</h2>
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
 {% endblock content %}

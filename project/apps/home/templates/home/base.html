@@ -17,16 +17,14 @@
         {% include 'home/navbar.html' %}
 
         <!-- Header-->
-        <header class="bg-primary bg-gradient text-white">
-            <div class="container px-1 text-center">
-                <h1 class="fw-bolder display-4">{% block title %}{% endblock title %}</h1>
-            </div>
-        </header>
-
+        {% block header %}
+        {% endblock header %}
+        
+        
         <!-- Contenido principal -->
         <main class="bg-light" id="services">
-            <section class="container px-4">
-                    {% block content %}{% endblock content %}
+            <section class="container px-4" style="min-height: 90vh">
+                {% block content %}{% endblock content %}
             </section>
         </main>
 
