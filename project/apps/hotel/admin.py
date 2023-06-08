@@ -52,5 +52,12 @@ class ReservaAdmin(admin.ModelAdmin):
     ordering = ("fecha_entrada",)
     list_filter = ("fecha_entrada",)
 
+@admin.register(models.Cliente)
+class ClienteAdmin(admin.ModelAdmin):
+    list_display =(
+        "usuario",
+        "celular",
+        "avatar",
+    )
 
     
