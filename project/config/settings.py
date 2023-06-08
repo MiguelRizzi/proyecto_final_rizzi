@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+# Para las variables LOGIN
+from django.urls import reverse_lazy
+
 #! Sirve para generar la clave secreta para el proyecto
 from django.core.management.utils import get_random_secret_key
 
@@ -131,8 +134,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#! Login
+LOGIN_URL = reverse_lazy("home:login")
+LOGIN_REDIRECT_URL = reverse_lazy("home:index")
+
+
+#! Media
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
