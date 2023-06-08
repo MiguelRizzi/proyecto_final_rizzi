@@ -7,6 +7,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home:index' %}">Home</a></li>
                 <li class="nav-item"><a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'home:about' %}">About</a></li>
+                <li class="nav-item"><a class="nav-link {% if request.path == '/hotel/' %}active{% endif %}" href="{% url 'hotel:index' %}">Hotel</a></li>
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link text-info">{{ user.username }}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'home:logout' %}">Logout</a></li>

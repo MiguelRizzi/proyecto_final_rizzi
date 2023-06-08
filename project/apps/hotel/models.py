@@ -28,8 +28,21 @@ class Habitacion(models.Model):
     def __str__(self):
         return f"Habitacion N° {self.numero} - {self.tipo}"
     
+class Cliente(models.Model):
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name="cliente")
+    celular = models.CharField(max_length=50)
+    avatar = models.ImageField(upload_to="avatars", blank=True, null=True)
+
+    class Meta:
+        verbose_name = "cliente"
+        verbose_name_plural = "clientes"
+
+    def __str__(self):
+        return f"{self.usuario.username}"
+
+
 class Reserva(models.Model):
-    cliente = models.ForeignKey(User, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
     fecha_entrada = models.DateField()
     fecha_salida = models.DateField()

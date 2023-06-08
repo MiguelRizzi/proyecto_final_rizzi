@@ -1,15 +1,13 @@
-{% extends 'home/base.html' %}
-
+{% extends 'hotel/index.html' %}
 
 {% block content %}
-    <h2 class="display-5">Iniciar sesión</h2>
+    <h2 class="display-5">Reservas</h2>
 
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="d-grid gap-3">
-            <button type="submit" class="btn btn-success">Iniciar sesión</button>
+            <button type="submi" class="btn btn-success">Guardar</button>
         </div>
     </form>
-
 {% endblock content %}
