@@ -1,0 +1,32 @@
+{% extends 'hotel/index.html' %}
+
+
+
+{% block content %}
+{% block title %} Lista de tipos de habitacion{% endblock title %}
+
+
+    {% if object_list %}
+
+        <!-- Sirve para buscar tipos de habitacion. Se pasa a la variable consulta de la vista. -->
+        <div class="py-lg-4">
+            <form action="{% url 'hotel:tipohabitacion_list' %}" method="get">
+                <input name="consulta" type="text" placeholder="Buscar...">
+            </form>
+        </div>
+
+        {% for tipo_habitacion in object_list %}
+            <ul>
+                <li>{{ tipo_habitacion.nombre }}
+                    <a href="{% url 'hotel:tipohabitacion_detail' tipo_habitacion.id %}" class="btn btn-secondary">Ver detalle</a>
+                    <a href="{% url 'hotel:tipohabitacion_update' tipo_habitacion.id %}" class="btn btn-primary">Actualizar</a>
+                    <a href="{% url 'hotel:tipohabitacion_delete' tipo_habitacion.id %}" class="btn btn-danger">Eliminar</a>
+                </li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p class="fs-4 fst-italic">No hay registros ingresados</p>
+    {% endif %}
+
+
+{% endblock content %}

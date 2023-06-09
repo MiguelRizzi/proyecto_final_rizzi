@@ -1,27 +1,42 @@
 {% extends 'home/base.html' %}
 {% load static %}
 
+<h1 class="shadow-lg text-center">App Hotel</h1>
+
 {% block content %}
-    <h1 class="shadow-lg text-center">App Hotel</h1>
+<h2 class="pb-lg-3">
+    {% block title %}Menu{% endblock title %}
+</h2>
     <div class="container mt-lg-3">
+
         <h3 class="pb-lg-3">
-            {% block title %}Hotel
-            {% endblock title %}
+            Tipo de Habitacion
         </h3>
-
-    
         <div class="d-grid gap-3">
-                
-            <a href="{% url 'hotel:tipohabitacion_create' %}"
-                class="btn btn-primary">Crear tipo de habitacion</a>
-               
-            <a href="{% url 'hotel:habitacion_create' %}"
-                class="btn btn-primary">Crear Habitacion</a>
+            {% if user.is_staff %}
+                <a href="{% url 'hotel:tipohabitacion_create' %}" class="btn btn-primary">Crear</a>
+            {% endif %}
+            <a href="{% url 'hotel:tipohabitacion_list' %}" class="btn btn-primary">Listar</a> <br>
+        </div>
 
-            <a href="{% url 'hotel:reserva_create' %}"
-                class="btn btn-primary">Reservar</a>
-            <br>
+        <h3 class="pb-lg-3">
+            Habitaciones
+        </h3>
+        <div class="d-grid gap-3">
+            {% if user.is_staff %}
+                <a href="{% url 'hotel:habitacion_create' %}" class="btn btn-primary">Crear</a>
+            {% endif %}
+            <a href="" class="btn btn-primary">Listar</a> <br>
+        </div>
 
+        <h3 class="pb-lg-3">
+            Reservas
+        </h3>
+        <div class="d-grid gap-3">
+            {% if user.is_staff %}
+                <a href="{% url 'hotel:reserva_create' %}" class="btn btn-primary">Crear</a>
+            {% endif %}
+            <a href="" class="btn btn-primary">Listar</a> <br>
         </div>
 
         <div class="d-grid gap-3">
@@ -29,3 +44,4 @@
         </div>
     </div>
 {% endblock content %}
+

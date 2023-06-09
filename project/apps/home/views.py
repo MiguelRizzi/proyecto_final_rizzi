@@ -1,7 +1,5 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import AuthenticationForm
 from . import forms
 
 # Registro basado en funciones

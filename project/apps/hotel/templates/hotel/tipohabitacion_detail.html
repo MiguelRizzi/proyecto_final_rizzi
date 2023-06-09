@@ -1,0 +1,16 @@
+{% extends 'hotel/index.html' %}
+
+
+
+{% block content %}
+
+    {% block title %} Detalle {% endblock title %}
+
+    <ul>
+        <li>
+            <p><strong>Nombre:</strong> {{ object.nombre }}</p>
+            <p><strong>Detalle:</strong> {{ object.descripcion }}</p>
+        </li>
+    </ul>
+
+{% endblock content %}
