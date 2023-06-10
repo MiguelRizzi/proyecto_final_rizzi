@@ -1,0 +1,20 @@
+{% extends 'home/base.html' %}
+
+
+
+{% block content %}
+
+    {% block title %} Ver perfil {% endblock title %}
+
+    <ul>
+        <li>
+            <p><strong>Usuario:</strong> {{ object.usuario }}</p>
+            <p><strong>Descripcion:</strong> {{ object.descripcion }}</p>
+            {% if object.avatar %}
+                <img src="{{ object.avatar.url }}" alt="Avatar" ...>
+            {% endif %}
+            
+        </li>
+    </ul>
+
+{% endblock content %}

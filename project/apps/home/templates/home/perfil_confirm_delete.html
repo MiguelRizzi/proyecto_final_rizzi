@@ -1,9 +1,6 @@
-{% extends 'hotel/index.html' %}
-
-
+{% extends 'home/base.html' %}
 
 {% block content %}
-
     <p class="fs-5 fst-italic ">¿Confirmas eliminar "{{ object }}"?</p>
 
     <form method="post">
@@ -12,6 +9,4 @@
             <button type="submit" class="btn btn-danger">Confirmar</button>
         </div>
     </form>
-
-
-{% endblock content %}
+{% endblock %}
