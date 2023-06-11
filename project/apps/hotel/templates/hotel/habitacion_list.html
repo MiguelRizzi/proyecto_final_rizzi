@@ -1,0 +1,32 @@
+{% extends 'hotel/index.html' %}
+
+
+
+{% block content %}
+{% block title %}Lista de habitaciones{% endblock title %}
+
+
+    {% if object_list %}
+
+        <!-- Sirve para buscar habitaciones. Se pasa a la variable consulta de la vista. -->
+        <div class="py-lg-4">
+            <form action="{% url 'hotel:habitacion_list' %}" method="get">
+                <input name="consulta" type="text" placeholder="Buscar por numero...">
+            </form>
+        </div>
+
+        {% for habitacion in object_list %}
+            <ul>
+                <li>{{ habitacion.numero }}
+                    <a href="{% url 'hotel:habitacion_detail' habitacion.id %}" class="btn btn-secondary">Ver detalle</a>
+                    <a href="{% url 'hotel:habitacion_update' habitacion.id %}" class="btn btn-primary">Actualizar</a>
+                    <a href="{% url 'hotel:habitacion_delete' habitacion.id %}" class="btn btn-danger">Eliminar</a>
+                </li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p class="fs-4 fst-italic">No hay registros ingresados</p>
+    {% endif %}
+
+
+{% endblock content %}

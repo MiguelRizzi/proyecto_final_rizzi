@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+    <h2 class="display-5 mb-4">Habitacion</h2>
+
+    <ul>
+        <li>
+            <p><strong>Numero:</strong> {{ object.numero }}</p>
+            <p><strong>Descripcion:</strong> {{ object.descripcion }}</p>
+            <p><strong>Precio por dia:</strong> ${{ object.precio_x_dia }}</p>
+            <p><strong>Disponible:</strong> {{ object.disponible }}</p>
+            {% if object.imagen %}
+                <p><strong>Imagen:</strong> {{ object.imagen.url }}</p>
+            {% endif %}
+        </li>
+    </ul>
+
+{% endblock content %}

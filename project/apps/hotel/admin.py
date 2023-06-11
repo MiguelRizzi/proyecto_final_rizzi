@@ -51,13 +51,3 @@ class ReservaAdmin(admin.ModelAdmin):
     search_fields = ("cliente__username", "habitacion__tipo__nombre")
     ordering = ("fecha_entrada",)
     list_filter = ("fecha_entrada",)
-
-@admin.register(models.Cliente)
-class ClienteAdmin(admin.ModelAdmin):
-    list_display =(
-        "usuario",
-        "celular",
-        "avatar",
-    )
-
-    

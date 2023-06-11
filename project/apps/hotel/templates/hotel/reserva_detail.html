@@ -1,0 +1,19 @@
+{% extends 'hotel/index.html' %}
+
+
+
+{% block content %}
+
+    {% block title %} Reserva {% endblock title %}
+
+    <ul>
+        <li>
+            <p><strong>Cliente:</strong> {{ object.cliente }}</p>
+            <p><strong>Habitacion:</strong> {{ object.habitacion }}</p>
+            <p><strong>Fecha de entrada:</strong> {{ object.fecha_entrada }}</p>
+            <p><strong>Fecha de salida:</strong> {{ object.fecha_salida }}</p>
+            <p><strong>Precio total:</strong> ${{ object.precio_total }}</p>
+        </li>
+    </ul>
+
+{% endblock content %}

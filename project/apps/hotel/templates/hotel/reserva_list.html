@@ -1,0 +1,32 @@
+{% extends 'hotel/index.html' %}
+
+
+
+{% block content %}
+{% block title %} Lista de Reservas {% endblock title %}
+
+
+    {% if object_list %}
+
+        <!-- Sirve para buscar reservas. Se pasa a la variable consulta de la vista. -->
+        <div class="py-lg-4">
+            <form action="{% url 'hotel:reserva_list' %}" method="get">
+                <input name="consulta" type="text" placeholder="Buscar por clientes...">
+            </form>
+        </div>
+
+        {% for reserva in object_list %}
+            <ul>
+                <li>{{ reserva.cliente }}
+                    <a href="{% url 'hotel:reserva_detail' reserva.id %}" class="btn btn-secondary">Ver detalle</a>
+                    <a href="{% url 'hotel:reserva_update' reserva.id %}" class="btn btn-primary">Actualizar</a>
+                    <a href="{% url 'hotel:reserva_delete' reserva.id %}" class="btn btn-danger">Eliminar</a>
+                </li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p class="fs-4 fst-italic">No hay registros ingresados</p>
+    {% endif %}
+
+
+{% endblock content %}

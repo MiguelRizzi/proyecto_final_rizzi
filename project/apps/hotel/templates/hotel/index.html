@@ -1,17 +1,12 @@
-{% extends 'home/base.html' %}
+{% extends 'home/index.html' %}
 {% load static %}
 
-<h1 class="shadow-lg text-center">App Hotel</h1>
+{% block title %}App Hotel{% endblock title %}
 
 {% block content %}
-<h2 class="pb-lg-3">
-    {% block title %}Menu{% endblock title %}
-</h2>
-    <div class="container mt-lg-3">
 
-        <h3 class="pb-lg-3">
-            Tipo de Habitacion
-        </h3>
+    <div class="container mt-lg-3">
+        <h2 class="display-6 mb-4">Tipo de Habitacion</h3>
         <div class="d-grid gap-3">
             {% if user.is_staff %}
                 <a href="{% url 'hotel:tipohabitacion_create' %}" class="btn btn-primary">Crear</a>
@@ -19,28 +14,24 @@
             <a href="{% url 'hotel:tipohabitacion_list' %}" class="btn btn-primary">Listar</a> <br>
         </div>
 
-        <h3 class="pb-lg-3">
-            Habitaciones
-        </h3>
+        <h2 class="display-6 mb-4">Habitaciones</h3>
         <div class="d-grid gap-3">
             {% if user.is_staff %}
                 <a href="{% url 'hotel:habitacion_create' %}" class="btn btn-primary">Crear</a>
             {% endif %}
-            <a href="" class="btn btn-primary">Listar</a> <br>
+            <a href="{% url 'hotel:habitacion_list' %}" class="btn btn-primary">Listar</a> <br>
         </div>
 
-        <h3 class="pb-lg-3">
-            Reservas
-        </h3>
+        <h2 class="display-5 mb-4">Reservas</h3>
         <div class="d-grid gap-3">
             {% if user.is_staff %}
                 <a href="{% url 'hotel:reserva_create' %}" class="btn btn-primary">Crear</a>
             {% endif %}
-            <a href="" class="btn btn-primary">Listar</a> <br>
+            <a href="{% url 'hotel:reserva_list' %}" class="btn btn-primary">Listar</a> <br>
         </div>
 
         <div class="d-grid gap-3">
-            <a href="{% url 'home:index' %}" class="btn btn-info">Ir a Inicio</a>
+            <a href="{% url 'home:index' %}" class="btn btn-info mt-4">Ir a Inicio</a>
         </div>
     </div>
 {% endblock content %}
