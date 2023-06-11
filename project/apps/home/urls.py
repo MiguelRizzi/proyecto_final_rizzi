@@ -14,7 +14,6 @@ urlpatterns = [
     path("perfil/create/", views.PerfilCreate.as_view(), name="perfil_create"),
     path("perfil/update/<int:pk>", views.PerfilUpdate.as_view(), name="perfil_update"),
     path("perfil/delete/<int:pk>", views.PerfilDelete.as_view(), name="perfil_delete"),
-
 ]
 
 urlpatterns += staticfiles_urlpatterns()

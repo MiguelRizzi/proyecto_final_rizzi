@@ -4,8 +4,6 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
         <title>Mi proyecto </title>
         <link rel="icon" type="image/x-icon" href="{% static 'home/assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -20,11 +18,11 @@
         {% block header %}
         {% endblock header %}
         
-        
         <!-- Contenido principal -->
         <main class="bg-light" id="services">
-            <section class="container px-4" style="min-height: 90vh">
-                {% block content %}{% endblock content %}
+            <section class="container px-4 text-center" style="min-height: 90vh">
+                {% block content %}
+                {% endblock content %}
             </section>
         </main>
 

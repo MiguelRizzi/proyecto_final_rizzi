@@ -19,11 +19,10 @@ def register(request: HttpRequest) -> HttpResponse:
         form = forms.CustomUserCreationForm()
     return render(request, "home/register.html", {"form": form})
 
-
+# Views basadas en clases
 class PerfilDetail(LoginRequiredMixin, DetailView):
     model = Perfil
     
-
 class PerfilCreate(LoginRequiredMixin, CreateView):
     model = Perfil
     form_class = forms.PerfilForm
