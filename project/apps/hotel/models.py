@@ -45,7 +45,10 @@ class Reserva(models.Model):
 
     def save(self, *args, **kwargs):
         """Guarda la instancia y calcula el precio total de la reserva segun numero de dias
-        entre las fechas de entrada y salida."""
+        entre las fechas de entrada y salida.
+        Establece a la habitacion de la reserva como no disponibe"""
         dias = (self.fecha_salida - self.fecha_entrada).days
         self.precio_total = self.habitacion.precio_x_dia * dias
         super().save(*args, **kwargs)
+        self.habitacion.disponible = False
+        self.habitacion.save()

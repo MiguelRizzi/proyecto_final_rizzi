@@ -1,16 +1,13 @@
-{% extends 'hotel/index.html' %}
-
-
+{% extends 'home/base.html' %}
 
 {% block content %}
+    <h2 class="display-5 mb-4">Detalle de tipo de habitacion</h2>
 
-    {% block title %} Detalle {% endblock title %}
-
-    <ul>
-        <li>
-            <p><strong>Nombre:</strong> {{ object.nombre }}</p>
-            <p><strong>Detalle:</strong> {{ object.descripcion }}</p>
-        </li>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Nombre:</strong> {{ object.nombre }}</li>
+        <li class="list-group-item"><strong>Detalle:</strong> {{ object.descripcion }}</li>
     </ul>
 
+    {% url 'hotel:index' as url %}
+    {% include 'home/index_back.html' with link=url %}
 {% endblock content %}

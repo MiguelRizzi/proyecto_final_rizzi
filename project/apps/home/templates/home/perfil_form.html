@@ -3,11 +3,14 @@
 {% block content %}
     <h2 class="display-5 mb-4">Informacion de perfil</h2>
         
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="px-5">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="d-grid gap-3">
             <button type="submi" class="btn btn-success">Guardar</button>
         </div>
     </form>
+
+    {% url 'home:index' as url %}
+    {% include 'home/index_back.html' with link=url %}
 {% endblock %}

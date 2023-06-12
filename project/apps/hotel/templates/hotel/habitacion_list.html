@@ -1,32 +1,49 @@
-{% extends 'hotel/index.html' %}
+{% extends 'hotel/list.html' %}
 
+<h2 class="display-5 mb-4">Lista de habitaciones</h2>
+{% block search %}
+    <!-- Sirve para buscar habitaciones. Se pasa a la variable consulta de la vista. -->
+    <div class="py-lg-4">
+        <form action="{% url 'hotel:habitacion_list' %}" method="get">
+            <input name="consulta" type="text" placeholder="Buscar por numero...">
+        </form>
+    </div>
+{% endblock search %}
 
-
-{% block content %}
-{% block title %}Lista de habitaciones{% endblock title %}
-
-
-    {% if object_list %}
-
-        <!-- Sirve para buscar habitaciones. Se pasa a la variable consulta de la vista. -->
-        <div class="py-lg-4">
-            <form action="{% url 'hotel:habitacion_list' %}" method="get">
-                <input name="consulta" type="text" placeholder="Buscar por numero...">
-            </form>
-        </div>
-
-        {% for habitacion in object_list %}
-            <ul>
-                <li>{{ habitacion.numero }}
-                    <a href="{% url 'hotel:habitacion_detail' habitacion.id %}" class="btn btn-secondary">Ver detalle</a>
-                    <a href="{% url 'hotel:habitacion_update' habitacion.id %}" class="btn btn-primary">Actualizar</a>
-                    <a href="{% url 'hotel:habitacion_delete' habitacion.id %}" class="btn btn-danger">Eliminar</a>
-                </li>
-            </ul>
-        {% endfor %}
-    {% else %}
-        <p class="fs-4 fst-italic">No hay registros ingresados</p>
-    {% endif %}
-
-
-{% endblock content %}
+{% block table_header %}
+    <tr>
+        <th>Numero</th>
+        <th>Descripcion</th>
+        <th>Precio/dia</th>
+        <th>Disponible</th>
+        <th>Imagen</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+{% endblock table_header %}
+     
+{% block table_body %}
+    {% for habitacion in object_list %}
+        <tr>
+            <td>{{ habitacion.numero }}</td>
+            <td>{{ habitacion.descripcion }}</td>
+            <td>${{ habitacion.precio_x_dia }}</td>
+            <td>{{ habitacion.disponible }}</td>
+            {% if habitacion.imagen %}
+                <td><a href="{{ habitacion.imagen.url }}">Ver imagen</a></td>
+            {% else %}
+                <td>Sin imagen</td>
+            {% endif %}
+            <td>
+                <a href="{% url 'hotel:habitacion_detail' habitacion.id %}" class="btn btn-secondary">Ver detalle</a>
+            </td>
+            <td>
+                <a href="{% url 'hotel:habitacion_update' habitacion.id %}" class="btn btn-primary">Actualizar</a>
+            </td>
+            <td>
+                <a href="{% url 'hotel:habitacion_delete' habitacion.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock table_body %}

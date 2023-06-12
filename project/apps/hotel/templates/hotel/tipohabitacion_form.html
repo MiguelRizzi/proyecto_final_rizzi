@@ -1,4 +1,4 @@
-{% extends 'hotel/index.html' %}
+{% extends 'home/base.html' %}
 
 {% block content %}
     <h2 class="display-5">Tipo de habitación</h2>
@@ -10,4 +10,7 @@
             <button type="submi" class="btn btn-success">Guardar</button>
         </div>
     </form>
+
+    {% url 'hotel:index' as url %}
+    {% include 'home/index_back.html' with link=url %}
 {% endblock content %}
