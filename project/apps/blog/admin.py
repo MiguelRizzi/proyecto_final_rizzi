@@ -10,8 +10,8 @@ class ReseñaAdmin(admin.ModelAdmin):
         "autor",
         "calificacion",
         "imagen",
-        "fecha_creacion",
+        "fecha",
     )
     search_fields = ("autor__username", "titulo")
-    ordering = ("fecha_creacion",)
-    list_filter = ("fecha_creacion",)
+    ordering = ("fecha",)
+    list_filter = ("fecha",)

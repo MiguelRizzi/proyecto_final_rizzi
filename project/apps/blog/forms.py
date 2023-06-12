@@ -7,7 +7,7 @@ class ReseñaForm(forms.ModelForm):
         fields = ['titulo', 'contenido', 'calificacion', 'imagen']
         widgets = {
         "titulo": forms.TextInput(attrs={"class": "form-control"}),
-        "contenido": forms.TextInput(attrs={"class": "form-control"}),
-        "calificacion": forms.TextInput(attrs={"class": "form-control"}),
+        "contenido": forms.Textarea(attrs={"class": "form-control"}),
+        "calificacion": forms.Select(attrs={"class": "form-control"}),
         "imagen": forms.FileInput(attrs={"class": "form-control"}),
         }

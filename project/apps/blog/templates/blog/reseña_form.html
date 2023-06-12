@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+    <h2 class="display-5">Reseña</h2>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-grid gap-3">
+            <button type="submi" class="btn btn-success">Guardar</button>
+        </div>
+    </form>
+    
+    {% url 'blog:index' as url %}
+    {% include 'home/index_back.html' with link=url %}
+{% endblock content %}

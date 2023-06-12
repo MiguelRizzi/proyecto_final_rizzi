@@ -16,7 +16,7 @@ class ReseñaList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         if self.request.GET.get("consulta"):
             query = self.request.GET.get("consulta")
-            object_list = Reseña.objects.filter(autor__icontains=query)
+            object_list = Reseña.objects.filter(autor__username__icontains=query)
         else:
             object_list = Reseña.objects.all()
         return object_list
@@ -25,10 +25,12 @@ class ReseñaCreateView(LoginRequiredMixin, CreateView):
     model = Reseña
     form_class = ReseñaForm
     success_url = reverse_lazy("blog:index")
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
 
 class ReseñaDelete(LoginRequiredMixin, DeleteView):
     model = Reseña
-    template_name = "blog/reseña_delete.html"
     success_url = reverse_lazy("blog:index")
 
 class ReseñaUpdate(LoginRequiredMixin, UpdateView):

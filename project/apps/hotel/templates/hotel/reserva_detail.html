@@ -11,6 +11,6 @@
         <li class="list-group-item"><strong>Precio total:</strong> ${{ object.precio_total }}</li>
     </ul>
 
-    {% url 'hotel:index' as url %}
+    {% url 'hotel:reserva_list' as url %}
     {% include 'home/index_back.html' with link=url %}
 {% endblock content %}

@@ -14,7 +14,7 @@ class Reseña(models.Model):
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     calificacion = models.IntegerField(choices=OPCIONES_CALIFICACION)
     imagen = models.ImageField(upload_to='blog', null=True, blank=True)
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fecha = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.titulo

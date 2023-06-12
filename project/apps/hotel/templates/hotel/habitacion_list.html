@@ -14,7 +14,6 @@
 {% block table_header %}
     <tr>
         <th>Numero</th>
-        <th>Descripcion</th>
         <th>Precio/dia</th>
         <th>Disponible</th>
         <th>Imagen</th>
@@ -30,7 +29,6 @@
     {% for habitacion in object_list %}
         <tr>
             <td>{{ habitacion.numero }}</td>
-            <td>{{ habitacion.descripcion }}</td>
             <td>${{ habitacion.precio_x_dia }}</td>
             <td>{{ habitacion.disponible }}</td>
             {% if habitacion.imagen %}
