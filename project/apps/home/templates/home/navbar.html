@@ -8,6 +8,7 @@
                 <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home:index' %}">Home</a></li>
                 <li class="nav-item"><a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'home:about' %}">About</a></li>
                 <li class="nav-item"><a class="nav-link {% if request.path == '/hotel/' %}active{% endif %}" href="{% url 'hotel:index' %}">Hotel</a></li>
+                <li class="nav-item"><a class="nav-link {% if request.path == '/blog/' %}active{% endif %}" href="{% url 'blog:index' %}">Blog</a></li>
                 {% if user.is_authenticated %}
                     <li class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle text-info" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">

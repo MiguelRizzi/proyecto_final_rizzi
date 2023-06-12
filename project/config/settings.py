@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # Apps propias
     'home',
     'hotel',
+    'blog',
 ]
 
 MIDDLEWARE = [

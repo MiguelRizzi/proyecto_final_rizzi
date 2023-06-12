@@ -1,0 +1,15 @@
+{% extends 'home/index.html' %}
+
+{% block title %}App Blog{% endblock title %}
+
+{% block content %}
+    <div class="container mt-lg-3">
+        <h2 class="display-6 mb-4">Deja tu reseña del hotel!</h3>
+        <div class="d-grid gap-3">
+            
+        </div>
+
+        {% url 'home:index' as url %}
+        {% include 'home/index_back.html' with link=url %}
+    </div>
+{% endblock content %}
