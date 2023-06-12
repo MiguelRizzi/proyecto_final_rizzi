@@ -20,8 +20,8 @@ urlpatterns = [
     # Reserva
     path("reserva/detail/<int:pk>", views.ReservaDetail.as_view(), name="reserva_detail"),
     path("reserva/list/", views.ReservaList.as_view(), name="reserva_list"),
-    path("reserva/create/", staff_member_required(views.ReservaCreateView.as_view()), name="reserva_create"),
-    path("reserva/delete/<int:pk>", staff_member_required(views.ReservaDelete.as_view()), name="reserva_delete"),
-    path("reserva/update/<int:pk>", staff_member_required(views.ReservaUpdate.as_view()), name="reserva_update"),
+    path("reserva/create/", views.ReservaCreateView.as_view(), name="reserva_create"),
+    path("reserva/delete/<int:pk>", views.ReservaDelete.as_view(), name="reserva_delete"),
+    path("reserva/update/<int:pk>", views.ReservaUpdate.as_view(), name="reserva_update"),
 ]
 

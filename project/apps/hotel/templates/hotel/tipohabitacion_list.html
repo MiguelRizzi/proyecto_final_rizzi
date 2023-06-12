@@ -15,8 +15,10 @@
         <th>Nombre</th>
         <th>Descripcion</th>
         <th></th>
-        <th></th>
-        <th></th>
+        {% if user.is_staff %}
+            <th></th>
+            <th></th>
+        {% endif %}
     </tr>
 {% endblock table_header %}
      
@@ -28,12 +30,14 @@
             <td>
                 <a href="{% url 'hotel:tipohabitacion_detail' tipo_habitacion.id %}" class="btn btn-secondary">Ver detalle</a>
             </td>
-            <td>
-                <a href="{% url 'hotel:tipohabitacion_update' tipo_habitacion.id %}" class="btn btn-primary">Actualizar</a>
-            </td>
-            <td>
-                <a href="{% url 'hotel:tipohabitacion_delete' tipo_habitacion.id %}" class="btn btn-danger">Eliminar</a>
-            </td>
+            {% if user.is_staff %} 
+                <td>
+                    <a href="{% url 'hotel:tipohabitacion_update' tipo_habitacion.id %}" class="btn btn-primary">Actualizar</a>
+                </td>
+                <td>
+                    <a href="{% url 'hotel:tipohabitacion_delete' tipo_habitacion.id %}" class="btn btn-danger">Eliminar</a>
+                </td>
+            {% endif %}
         </tr>
     {% endfor %}
 {% endblock table_body %}

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.contrib import auth
+from django.utils import timezone
 
 # Create your models here.
 class TipoHabitacion(models.Model):
@@ -42,7 +42,13 @@ class Reserva(models.Model):
     def clean(self):
         if self.habitacion.disponible == False:
             raise ValidationError("La habitacion no esta disponible")
-
+        if self.fecha_entrada < timezone.now().date():
+            raise ValidationError("La fecha de entrada no puede ser anterior al dia actual")
+        if self.fecha_salida < timezone.now().date():
+            raise ValidationError("La fecha de salida no puede ser anterior al dia actual")
+        if self.fecha_salida <= self.fecha_entrada:
+            raise ValidationError("La fecha de salida debe ser posterior a la fecha de entrada")
+        
     def save(self, *args, **kwargs):
         """Guarda la instancia y calcula el precio total de la reserva segun numero de dias
         entre las fechas de entrada y salida.
@@ -52,3 +58,4 @@ class Reserva(models.Model):
         super().save(*args, **kwargs)
         self.habitacion.disponible = False
         self.habitacion.save()
+        

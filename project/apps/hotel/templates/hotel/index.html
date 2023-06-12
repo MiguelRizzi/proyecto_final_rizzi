@@ -23,9 +23,7 @@
 
         <h2 class="display-5 mb-4">Reservas</h3>
         <div class="d-grid gap-3">
-            {% if user.is_staff %}
-                <a href="{% url 'hotel:reserva_create' %}" class="btn btn-primary">Crear</a>
-            {% endif %}
+            <a href="{% url 'hotel:reserva_create' %}" class="btn btn-primary">Crear</a>
             <a href="{% url 'hotel:reserva_list' %}" class="btn btn-primary">Listar</a> <br>
         </div>
 
