@@ -1,5 +1,5 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -10,13 +10,19 @@ from .models import Perfil
 # Registro basado en funciones
 def register(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
-        form = forms.CustomUserCreationForm(request.POST)
+        if request.user.is_staff:
+            form = forms.UserStaffCreationForm(request.POST)
+        else:
+            form = forms.CustomUserCreationForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data["username"]
             form.save()
             return render(request, "home/index.html", {"mensaje": "Usuario creado correctamente."})
     else:
-        form = forms.CustomUserCreationForm()
+        if request.user.is_staff:
+            form = forms.UserStaffCreationForm()
+        else:
+            form = forms.CustomUserCreationForm()
     return render(request, "home/register.html", {"form": form})
 
 # Views basadas en clases

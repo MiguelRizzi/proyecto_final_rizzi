@@ -37,7 +37,6 @@ class ReseñaDelete(LoginRequiredMixin, DeleteView):
         reseña = self.get_object()
         return reseña.autor == self.request.user or self.request.user.is_staff
 
-
 class ReseñaUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Reseña
     success_url = reverse_lazy("blog:index")
