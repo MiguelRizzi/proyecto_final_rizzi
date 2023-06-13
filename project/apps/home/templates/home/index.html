@@ -1,4 +1,5 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 {% block header %}
     <header class="bg-primary bg-gradient text-white">
@@ -9,6 +10,24 @@
 {% endblock header %}
     
 {% block content %}
+
+    {% if user.is_authenticated %}
+        <h3 class="d-flex align-items-center">Bienvenido {{ user.username }}
+            {% if user.perfil.avatar %}
+                <img src="{{ user.perfil.avatar.url }}" alt="Avatar" style="height: 30px; width: 30px; border-radius: 50%; object-fit: cover"/> 
+            {% else %}
+                <img src="{% static 'home/img/user.png' %}" alt="Avatar" style="height: 30px; width: 30px; border-radius: 50%; object-fit: cover" />
+            {% endif %}  
+        </h3>
+    {% endif %}
+    {% if user.is_staff %}
+        <div class="d-grid gap-3 mt-3 mb-5">
+            <a href="{% url 'admin:index' %}" class="btn btn-outline-dark">Administración</a>
+       
+            <a href="{% url 'home:register' %}" class="btn btn-outline-dark">Registrar nuevo vendedor</a>
+        </div>
+    {% endif %}
+
     <h2 class="display-5 mb-4">Home</h2>
     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore ut velit dignissimos.</p>
 {% endblock content %}

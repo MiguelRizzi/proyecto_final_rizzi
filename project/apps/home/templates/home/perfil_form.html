@@ -3,7 +3,7 @@
 {% block content %}
     <h2 class="display-5 mb-4">Informacion de perfil</h2>
         
-    <form method="post" enctype="multipart/form-data" class="px-5">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="d-grid gap-3">
