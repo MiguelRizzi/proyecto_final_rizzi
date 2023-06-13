@@ -5,26 +5,26 @@
 
 {% block content %}
     <div class="container mt-lg-3">
-        <h2 class="display-6 mb-4">Tipo de Habitacion</h3>
-        <div class="d-grid gap-3">
-            {% if user.is_staff %}
-                <a href="{% url 'hotel:tipohabitacion_create' %}" class="btn btn-primary">Crear</a>
-            {% endif %}
-            <a href="{% url 'hotel:tipohabitacion_list' %}" class="btn btn-primary">Listar</a> <br>
-        </div>
+        {% if user.is_staff %}
+            <h2 class="display-6 mb-4">Tipo de Habitacion</h3>
+            <div class="d-grid gap-3">
+                <a href="{% url 'hotel:tipohabitacion_create' %}" class="btn btn-primary">Crear tipo de Habitacion</a>
+                <a href="{% url 'hotel:tipohabitacion_list' %}" class="btn btn-primary">Ver tipo de Habitaciones</a> <br>
+            </div>
+        {% endif %}
 
         <h2 class="display-6 mb-4">Habitaciones</h3>
         <div class="d-grid gap-3">
             {% if user.is_staff %}
-                <a href="{% url 'hotel:habitacion_create' %}" class="btn btn-primary">Crear</a>
+                <a href="{% url 'hotel:habitacion_create' %}" class="btn btn-primary">Crear Habitacion</a>
             {% endif %}
-            <a href="{% url 'hotel:habitacion_list' %}" class="btn btn-primary">Listar</a> <br>
+            <a href="{% url 'hotel:habitacion_list' %}" class="btn btn-primary">Ver Habitaciones</a> <br>
         </div>
 
         <h2 class="display-5 mb-4">Reservas</h3>
         <div class="d-grid gap-3">
-            <a href="{% url 'hotel:reserva_create' %}" class="btn btn-primary">Crear</a>
-            <a href="{% url 'hotel:reserva_list' %}" class="btn btn-primary">Listar</a> <br>
+            <a href="{% url 'hotel:reserva_create' %}" class="btn btn-primary">Crear Reserva</a>
+            <a href="{% url 'hotel:reserva_list' %}" class="btn btn-primary">Ver Reservas</a> <br>
         </div>
 
         {% url 'home:index' as url %}

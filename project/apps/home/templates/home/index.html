@@ -20,7 +20,7 @@
         </h3>
     {% endif %}
 
-    {% if messages %}{{ messages }}{% endif %}
+    {% include 'home/messages.html' %}
 
     {% if user.is_staff %}
         <div class="d-grid gap-3 mt-3 mb-5">

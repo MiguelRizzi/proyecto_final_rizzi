@@ -6,8 +6,8 @@ from django.contrib.admin.views.decorators import staff_member_required
 urlpatterns = [
     path("", TemplateView.as_view(template_name="hotel/index.html"), name="index"),
     # Tipo de habitacion
-    path("tipohabitacion/detail/<int:pk>", views.TipoHabitacionDetail.as_view(), name="tipohabitacion_detail"),
-    path("tipohabitacion/list/", views.TipoHabitacionList.as_view(), name="tipohabitacion_list"),
+    path("tipohabitacion/detail/<int:pk>", staff_member_required(views.TipoHabitacionDetail.as_view()), name="tipohabitacion_detail"),
+    path("tipohabitacion/list/", staff_member_required(views.TipoHabitacionList.as_view()), name="tipohabitacion_list"),
     path("tipohabitacion/create/", staff_member_required(views.TipoHabitacionCreateView.as_view()), name="tipohabitacion_create"),
     path("tipohabitacion/delete/<int:pk>", staff_member_required(views.TipoHabitacionDelete.as_view()), name="tipohabitacion_delete"),
     path("tipohabitacion/update/<int:pk>", staff_member_required(views.TipoHabitacionUpdate.as_view()), name="tipohabitacion_update"),
