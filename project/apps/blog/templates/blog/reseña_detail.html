@@ -4,7 +4,7 @@
     <h2 class="display-5 mb-4">Detalle de Reseña</h2>
 
     <div class="d-grid gap-3">
-        <div class="card mb-4 mx-5">
+        <div class="card mb-4">
             
             <div class="card-body">
                 <h2 class="card-title border-bottom">{{ object.titulo}}</h2>
@@ -28,8 +28,8 @@
                 <img src="{{ object.imagen.url }}" class="card-img-bottom border-top" style="height: 400px; object-fit: contain;" alt="Imafen reseña">
             {% endif %}
         </div>
+        {% url 'blog:reseña_list' as url %}
+        {% include 'home/index_back.html' with link=url %}
     </div>
-    {% url 'blog:reseña_list' as url %}
-    {% include 'home/index_back.html' with link=url %}
 {% endblock content %}
 

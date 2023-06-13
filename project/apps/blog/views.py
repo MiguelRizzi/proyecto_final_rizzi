@@ -1,6 +1,6 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import DetailView, ListView
 from django.urls import reverse_lazy
@@ -32,8 +32,17 @@ class ReseñaCreateView(LoginRequiredMixin, CreateView):
 class ReseñaDelete(LoginRequiredMixin, DeleteView):
     model = Reseña
     success_url = reverse_lazy("blog:index")
+    def test_func(self):
+        """Determina el acceso a la vista, devuelve True si el usuario es el autor de la reseña o si es miembro del staff. False de lo contrario."""
+        reseña = self.get_object()
+        return reseña.autor == self.request.user or self.request.user.is_staff
 
-class ReseñaUpdate(LoginRequiredMixin, UpdateView):
+
+class ReseñaUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Reseña
     success_url = reverse_lazy("blog:index")
     form_class = ReseñaForm
+    def test_func(self):
+        """Determina el acceso a la vista, devuelve True si el usuario es el autor de la reseña, False de lo contrario."""
+        reseña = self.get_object()
+        return reseña.autor == self.request.user

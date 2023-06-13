@@ -116,7 +116,7 @@ class ReservaUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     form_class = forms.ReservaForm
     def test_func(self):
-        """Determina el acceso a la vista, evuelve True si el usuario es el cliente o si es personal del staff, False de lo contrario."""
+        """Determina el acceso a la vista, devuelve True si el usuario es el cliente o si es personal del staff, False de lo contrario."""
         reserva = self.get_object()
         return reserva.cliente == self.request.user or self.request.user.is_staff
 
