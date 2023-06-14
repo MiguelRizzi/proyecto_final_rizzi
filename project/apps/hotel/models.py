@@ -29,6 +29,9 @@ class Habitacion(models.Model):
     def __str__(self):
         return f"Habitacion N° {self.numero}"
 
+# Falta mejorar que cuando se cree una Reserva, la Habitacion reservada este no disponible 
+# unicamente para el periodo de tiempo entre fecha_entrada y salida_salida.
+
 class Reserva(models.Model):
     cliente = models.ForeignKey(User, on_delete=models.CASCADE)
     habitacion = models.ForeignKey(Habitacion, on_delete=models.CASCADE)
