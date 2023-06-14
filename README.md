@@ -1,4 +1,4 @@
-# Proyecto Final Rizzi
+# Proyecto Final - Miguel Angel Rizzi
 
 Proyecto final para el curso de Python en Coderhouse. Es una aplicación web Django que permite a los usuarios hacer reservas en un hotel y dejar reseñas. Se aplico los conceptos de herencia de plantillas, formularios, vistas basadas en clases, autenticación y autorización.
 
@@ -34,6 +34,10 @@ Instale las dependencias del proyecto usando el comando `pip install -r requirem
 
 Para utilizar la aplicación, primero crea una cuenta haciendo clic en el enlace "Registrarse" en la página de inicio. Una vez que tengas una cuenta, puedes iniciar sesión y comenzar a hacer reservas y dejar reseñas.
 
-Los miembros del staff tienen permisos adicionales y pueden crear tipos de habitaciones, habitaciones y reservas, así como eliminar reseñas.
+Los miembros del staff tienen permisos adicionales y pueden crear, modificar y eliminar tipos de habitaciones, habitaciones y reservas, así como eliminar reseñas de otros usuarios.
 
+---
+## Video demostracion
+
+https://www.youtube.com/watch?v=LnzijIFZjUo
 ---
