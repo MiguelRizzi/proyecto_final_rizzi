@@ -27,7 +27,7 @@ class Habitacion(models.Model):
         verbose_name_plural = "Habitaciones"
 
     def __str__(self):
-        return f"Habitacion N° {self.numero} - {self.tipo}"
+        return f"Habitacion N° {self.numero}"
 
 class Reserva(models.Model):
     cliente = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -40,8 +40,13 @@ class Reserva(models.Model):
         ordering = ("-fecha_entrada",)
 
     def clean(self):
-        if self.habitacion.disponible == False:
-            raise ValidationError("La habitacion no esta disponible")
+        if self.pk: # Si la reserva ya existe (se está actualizando)
+            reserva = Reserva.objects.get(pk=self.pk)
+            if self.habitacion != reserva.habitacion and not self.habitacion.disponible:
+                raise ValidationError("La habitación no está disponible")
+        else: # Si es una nueva reserva
+            if not self.habitacion.disponible:
+                raise ValidationError("La habitación no está disponible")
         if self.fecha_entrada < timezone.now().date():
             raise ValidationError("La fecha de entrada no puede ser anterior al dia actual")
         if self.fecha_salida < timezone.now().date():
@@ -58,4 +63,12 @@ class Reserva(models.Model):
         super().save(*args, **kwargs)
         self.habitacion.disponible = False
         self.habitacion.save()
-        
+    
+    def delete(self, *args, **kwargs):
+        """Establece la Habitacion como disponible cuando se elimina la reserva."""
+        self.habitacion.disponible = True
+        self.habitacion.save()
+        super().delete(*args, **kwargs)
+    
+    def __str__(self):
+        return f"{self.cliente} - {self.habitacion}"
